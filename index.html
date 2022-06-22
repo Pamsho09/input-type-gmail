@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #input {
+      width: 200px;
+      border-radius: 5px;
+      position: relative;
+      padding: 10px;
+      cursor: pointer;
+      box-sizing: border-box;
+      border: 1px solid #AED6F1;
+    }
+    #input-text {
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+    }
+
+    .input-active {
+      border: 1px solid #2E86C1 !important ;
+    }
+    .placeholder-active {
+      top: 0 !important;
+      transform: translate(-35%, -54%) !important;
+      font-size: 12px;
+      background: white;
+      color: #2C3E50  !important;
+      transition: all 0.6s ease-in-out;
+    }
+    #placeholder {
+        color: #707172;
+      position: absolute;
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: capitalize;
+      top: 50%;
+      right: 50%;
+      transition: all 0.6s ease-in-out;
+      transform: translate(50%, -50%);
+    }
+  </style>
+
+  <body>
+    <div id="input">
+      <input type="text" id="input-text" />
+      <div id="placeholder">contraseña</div>
+    </div>
+  </body>
+  <script>
+    const dom = {
+      input: document.getElementById("input-text"),
+      placeholder: document.getElementById("placeholder"),
+      container: document.getElementById("input"),
+    };
+    dom.container.addEventListener("mouseenter", () => {
+      console.log(dom.container.classList);
+      dom.container.classList = "input-active";
+      dom.placeholder.classList = "placeholder-active";
+    });
+    dom.input.addEventListener("mouseenter", () => {
+    console.log('entre al input')
+      dom.container.classList = "input-active";
+      dom.placeholder.classList = "placeholder-active";
+    });
+    dom.placeholder.addEventListener("mouseenter", () => {
+    console.log('entre al input')
+      dom.container.classList = "input-active";
+      dom.placeholder.classList = "placeholder-active";
+    });
+
+
+    dom.input.addEventListener("click", () => {
+      if (!!dom.input.value) {
+        dom.container.classList = "input-active";
+        dom.placeholder.classList = "placeholder-active";
+      }
+    });
+
+    dom.container.addEventListener("mouseout", () => {
+      console.log(dom.container.classList);
+      if (!!!dom.input.value) {
+        dom.container.classList = "";
+        dom.placeholder.classList = "";
+      }
+    });
+  </script>
+</html>
